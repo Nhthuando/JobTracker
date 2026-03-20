@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -13,8 +13,8 @@ model users {
   password   String    @db.VarChar(255)
   name       String    @db.VarChar(100)
   avatar_url String?   @db.VarChar(500)
-  created_at DateTime? @default(now()) @db.DateTime(0)
-  updated_at DateTime? @default(now()) @db.DateTime(0)
+  created_at DateTime? @default(now()) 
+  updated_at DateTime? @default(now()) 
   jobs       jobs[]
 }
 
@@ -25,8 +25,8 @@ model jobs {
   status         jobs_status?   @default(APPLIED)
   priority       jobs_priority? @default(MEDIUM)
   source         String?        @db.VarChar(100)
-  applied_date   DateTime?      @default(now()) @db.DateTime(0)
-  interview_date DateTime?      @db.DateTime(0)
+  applied_date   DateTime?      @default(now()) 
+  interview_date DateTime?      
   notes          String?        @db.Text
   salary         String?        @db.VarChar(100)
   location       String?        @db.VarChar(255)
@@ -34,8 +34,8 @@ model jobs {
   contact_name   String?        @db.VarChar(100)
   contact_email  String?        @db.VarChar(255)
   user_id        Int
-  created_at     DateTime?      @default(now()) @db.DateTime(0)
-  updated_at     DateTime?      @default(now()) @db.DateTime(0)
+  created_at     DateTime?      @default(now()) 
+  updated_at     DateTime?      @default(now()) 
   users          users          @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "jobs_ibfk_1")
 
   @@index([user_id], map: "user_id")
