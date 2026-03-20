@@ -1,0 +1,67 @@
+.navbar {
+  width: 100%;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.navbar-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-logo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #3b82f6;
+  box-shadow: 0 0 14px #3b82f680;
+}
+
+.navbar-logo-text {
+  font-family: "Sora", sans-serif;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.navbar-user-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-user-name {
+  color: #cbd0df;
+}
+
+.navbar-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #ffffff24;
+  background: #ffffff10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.navbar-logout {
+  padding: 8px 12px;
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-user-wrap {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id         Int       @id @default(autoincrement())
+  email      String    @unique(map: "email") @db.VarChar(255)
+  password   String    @db.VarChar(255)
+  name       String    @db.VarChar(100)
+  avatar_url String?   @db.VarChar(500)
+  created_at DateTime? @default(now()) @db.DateTime(0)
+  updated_at DateTime? @default(now()) @db.DateTime(0)
+  jobs       jobs[]
+}
+
+model jobs {
+  id             Int            @id @default(autoincrement())
+  company        String         @db.VarChar(255)
+  position       String         @db.VarChar(255)
+  status         jobs_status?   @default(APPLIED)
+  priority       jobs_priority? @default(MEDIUM)
+  source         String?        @db.VarChar(100)
+  applied_date   DateTime?      @default(now()) @db.DateTime(0)
+  interview_date DateTime?      @db.DateTime(0)
+  notes          String?        @db.Text
+  salary         String?        @db.VarChar(100)
+  location       String?        @db.VarChar(255)
+  job_url        String?        @db.VarChar(500)
+  contact_name   String?        @db.VarChar(100)
+  contact_email  String?        @db.VarChar(255)
+  user_id        Int
+  created_at     DateTime?      @default(now()) @db.DateTime(0)
+  updated_at     DateTime?      @default(now()) @db.DateTime(0)
+  users          users          @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "jobs_ibfk_1")
+
+  @@index([user_id], map: "user_id")
+}
+
+enum jobs_status {
+  APPLIED
+  INTERVIEWING
+  OFFER
+  REJECTED
+  GHOSTED
+}
+
+enum jobs_priority {
+  LOW
+  MEDIUM
+  HIGH
+}

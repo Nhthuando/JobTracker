@@ -1,0 +1,111 @@
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.job-card {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: cardFadeIn 350ms ease both;
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+.job-card:hover {
+  background: #1b1d24;
+  border-color: #ffffff22;
+}
+
+.job-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.job-position {
+  font-size: 1.04rem;
+}
+
+.job-status {
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 0.76rem;
+  letter-spacing: 0.01em;
+  border: 1px solid #ffffff14;
+}
+
+.job-meta p {
+  margin: 5px 0;
+  color: #c5ccdc;
+}
+
+.job-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.priority-chip {
+  font-size: 0.78rem;
+  border-radius: 999px;
+  border: 1px solid #ffffff1f;
+  padding: 4px 9px;
+}
+
+.priority-high {
+  color: #f59e0b;
+  background: #f59e0b1e;
+}
+
+.priority-medium {
+  color: #3b82f6;
+  background: #3b82f61e;
+}
+
+.priority-low {
+  color: #10b981;
+  background: #10b9811e;
+}
+
+.job-actions {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.job-card:hover .job-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid #ffffff1f;
+  background: #ffffff08;
+  color: #d8dff0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.icon-btn:hover {
+  transform: translateY(-1px);
+  background: #ffffff16;
+}
